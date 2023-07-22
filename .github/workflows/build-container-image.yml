@@ -48,7 +48,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/mastodon:latest , ${{ secrets.DOCKER_USERNAME }}/mastodon:v4.1.4.3
+          tags: ${{ secrets.DOCKER_USERNAME }}/mastodon:latest
           build-args: MASTODON_VERSION_SUFFIX=${{ steps.version_vars.outputs.mastodon_version_suffix }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

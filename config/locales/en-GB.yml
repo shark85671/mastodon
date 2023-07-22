@@ -1689,6 +1689,13 @@ en-GB:
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
     mastodon-light: Mastodon (Light)
+    modern-dark: Modern (Dark)
+    modern-light: Modern (Light)
+    bird-light: Bird (Light)
+    bird-dark: Bird (Dark)
+    bird-contrast: Bird (Contrast)
+    tangerineui: Tangerineui
+    tangerineui-purple: Tangerineui (Purple)
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

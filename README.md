@@ -1,6 +1,6 @@
 <h1><picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./lib/assets/wordmark.dark.png?raw=true">
-  <source media="(prefers-color-scheme: light)" srcset="./lib/assets/wordmark.light.png?raw=true">
+  <source media="(prefers-color-scheme: dark)" srcset="https://github.com/mastodon/mastodon/blob/ea10febd257b5b729a50aeb3218389763f5f4b97/lib/assets/wordmark.dark.png?raw=true">
+  <source media="(prefers-color-scheme: light)" srcset="https://github.com/mastodon/mastodon/blob/ea10febd257b5b729a50aeb3218389763f5f4b97/lib/assets/wordmark.light.png?raw=true">
   <img alt="Mastodon" src="./lib/assets/wordmark.light.png?raw=true" height="34">
 </picture></h1>
 

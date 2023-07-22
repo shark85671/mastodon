@@ -19,8 +19,9 @@ module.exports = merge(sharedConfig, {
   devtool: 'source-map',
   stats: 'normal',
   bail: true,
+  parallelism: 1,
   optimization: {
-    minimize: true,
+    minimize: false,
     minimizer: [
       new TerserPlugin({
         cache: true,

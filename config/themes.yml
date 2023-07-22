@@ -3,3 +3,6 @@ contrast: styles/contrast.scss
 mastodon-light: styles/mastodon-light.scss
 modern-dark: styles/modern-dark.scss
 modern-light: styles/modern-light.scss
+bird-light: styles/Bird-UI-light.scss
+bird-dark: styles/Bird-UI-dark.scss
+bird-contrast: styles/Bird-UI-contrast.scss

@@ -1657,13 +1657,6 @@ zh-CN:
     contrast: Mastodon（高对比度）
     default: Mastodon（暗色主题）
     mastodon-light: Mastodon（亮色主题）
-    modern-dark: 现代 (暗色主题
-    modern-light: 现代 (亮色主题
-    bird-light: Bird (亮色主题)
-    bird-dark: Bird (暗色主题)
-    bird-contrast: Bird (高对比度)
-    tangerineui: Tangerineui
-    tangerineui-purple: Tangerineui (紫色)
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"

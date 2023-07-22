@@ -1562,13 +1562,6 @@ zh-HK:
     contrast: 高對比
     default: 萬象
     mastodon-light: 萬象（亮色主題）
-    modern-dark: 現代 (暗色主題)
-    modern-light: 現代 (亮色主題)
-    bird-light: Bird (亮色主題)
-    bird-dark: Bird (暗色主題)
-    bird-contrast: Bird (高對比）
-    tangerineui: Tangerineui
-    tangerineui-purple: Tangerineui (紫色)
   time:
     formats:
       default: "%Y年%-m月%d日 %H:%M"

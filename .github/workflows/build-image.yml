@@ -33,38 +33,19 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-        if: github.repository == 'shark85671/mastodon' && github.event_name != 'pull_request'
 
-      - name: Log in to the Github Container registry
-        uses: docker/login-action@v2
+      - name: Generate version suffix
+        id: version_vars
+        if: github.repository == 'shark85671/mastodon' && github.event_name == 'push' && github.ref_name == 'main'
+        run: |
+          echo mastodon_version_suffix=-$(git rev-parse --short HEAD) >> $GITHUB_OUTPUT
+      
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v4
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-        if: github.repository == 'shark85671/mastodon' && github.event_name != 'pull_request'
-
-      - uses: docker/metadata-action@v4
-        id: meta
-        with:
-          images: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/mastodon
-            ghcr.io/shark85671/mastodon
-          flavor: |
-            latest=auto
-          tags: |
-            type=edge,branch=main
-            type=pep440,pattern={{raw}}
-            type=pep440,pattern=v{{major}}.{{minor}}
-            type=ref,event=pr
-
-      - uses: docker/build-push-action@v4
-        with:
-          context: .
-          platforms: linux/amd64,linux/arm64
-          provenance: false
-          builder: ${{ steps.buildx.outputs.name }}
-          push: ${{ github.repository == 'shark85671/mastodon' && github.event_name != 'pull_request' }}
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mastodon:v4.1.3.2 , ${{ secrets.DOCKERHUB_USERNAME }}/mastodon:latest
+          build-args: MASTODON_VERSION_SUFFIX=${{ steps.version_vars.outputs.mastodon_version_suffix }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

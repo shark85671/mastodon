@@ -1570,6 +1570,7 @@ zh-HK:
     tangerineui: Tangerine 橙色 (自動)
     tangerineui-purple: Tangerine 紫色 (自動)
     tangerineui-pink: Tangerine 粉色 (自動)
+    tangerineui-shark: Tangerine Shark (自動)
   time:
     formats:
       default: "%Y年%-m月%d日 %H:%M"

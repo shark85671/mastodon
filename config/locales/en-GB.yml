@@ -1686,9 +1686,16 @@ en-GB:
   tags:
     does_not_match_previous_name: does not match the previous name
   themes:
-    contrast: Mastodon (High contrast)
-    default: Mastodon (Dark)
+    default: Bird (Dark)
+    mastodon-bird-ui-light: Bird (Light)
+    mastodon-bird-ui-contrast: Bird (High contrast)
+    mastodon-dark: Mastodon (Dark)
     mastodon-light: Mastodon (Light)
+    contrast: Mastodon (High contrast)
+    modern-dark: Modern (Dark)
+    modern-light: Modern (Light)
+    tangerineui: Tangerine (Auto)
+    tangerineui-purple: Tangerine Purple (Auto)
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

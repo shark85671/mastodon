@@ -1567,8 +1567,9 @@ zh-HK:
     contrast: 萬象（高對比）
     modern-dark: Modern（暗色主題）
     modern-light: Modern（亮色主題）
-    tangerineui: Tangerine (自動)
-    tangerineui-purple: Tangerine Purple (自動)
+    tangerineui: Tangerine 橙色 (自動)
+    tangerineui-purple: Tangerine 紫色 (自動)
+    tangerineui-pink: Tangerine 粉色 (自動)
   time:
     formats:
       default: "%Y年%-m月%d日 %H:%M"

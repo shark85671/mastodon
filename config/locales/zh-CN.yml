@@ -1654,9 +1654,16 @@ zh-CN:
   tags:
     does_not_match_previous_name: 和之前的名称不匹配
   themes:
-    contrast: Mastodon（高对比度）
-    default: Mastodon（暗色主题）
-    mastodon-light: Mastodon（亮色主题）
+    default: Bird (深色)
+    mastodon-bird-ui-light: Bird（亮色）
+    mastodon-bird-ui-contrast: Bird（高对比）
+    mastodon-dark: Mastodon（深色）
+    mastodon-light: Mastodon（亮色）
+    contrast: Mastodon（高对比）
+    modern-dark: Modern（深色）
+    modern-light: Modern（亮色）
+    tangerineui: Tangerine (自动)
+    tangerineui-purple: Tangerine Purple (自动)
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"

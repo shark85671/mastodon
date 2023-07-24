@@ -8,3 +8,4 @@ modern-dark: styles/modern-dark.scss
 modern-light: styles/modern-light.scss
 tangerineui: styles/tangerineui.scss
 tangerineui-purple: styles/tangerineui-purple.scss
+tangerineui-pink: styles/tangerineui-pink.scss

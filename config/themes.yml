@@ -1,4 +1,4 @@
-default: styles/tangerineui.scss
+default: mastodon-bird-ui-dark.scss
 mastodon-bird-ui-light: styles/mastodon-bird-ui-light.scss
 mastodon-bird-ui-contrast: styles/mastodon-bird-ui-contrast.scss
 mastodon-dark: styles/application.scss

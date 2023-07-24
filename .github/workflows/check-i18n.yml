@@ -44,7 +44,7 @@ jobs:
           yarn i18n:extract --throws
           git diff --exit-code
 
-      - name: Exec normalize
+      - name: Run normalization
         run: bundle exec i18n-tasks normalize
 
       - name: Check locale file normalization

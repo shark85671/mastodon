@@ -1698,7 +1698,9 @@ en:
     tangerineui: Tangerine (Auto)
     tangerineui-purple: Tangerine Purple (Auto)
     tangerineui-pink: Tangerine Pink (Auto)
+    tangerineui-pink-light: Tangerine Pink (Light)
     tangerineui-shark: Tangerine Shark (Auto)
+    tangerineui-shark-light: Tangerine Shark (Light)
   time:
     formats:
       default: "%b %d, %Y, %H:%M"

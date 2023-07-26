@@ -1669,7 +1669,9 @@ zh-TW:
     tangerineui: Tangerine 橙色 (自動)
     tangerineui-purple: Tangerine 紫色 (自動)
     tangerineui-pink: Tangerine 粉色 (自動)
+    tangerineui-pink-light: Tangerine 粉色 (亮色)
     tangerineui-shark: Tangerine Shark (自動)
+    tangerineui-shark-light: Tangerine Shark (亮色)
   time:
     formats:
       default: "%Y 年 %b 月 %d 日 %H:%M"

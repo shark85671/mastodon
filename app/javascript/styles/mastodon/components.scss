@@ -2158,7 +2158,7 @@ $ui-header-height: 55px;
 
     @media screen and (width >= 320px) {
       .logo--wordmark {
-        display: none;
+        display: block;
       }
 
       .logo--icon {

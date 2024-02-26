@@ -60,7 +60,7 @@ RSpec.describe UserRole do
   end
 
   describe '#permissions_as_keys=' do
-    let(:input) {}
+    let(:input) { nil }
 
     before do
       subject.permissions_as_keys = input
@@ -164,12 +164,12 @@ RSpec.describe UserRole do
   end
 
   describe '#everyone?' do
-    it 'returns true when id is -99' do
-      subject.id = -99
+    it 'returns true when id matches the everyone id' do
+      subject.id = described_class::EVERYONE_ROLE_ID
       expect(subject.everyone?).to be true
     end
 
-    it 'returns false when id is not -99' do
+    it 'returns false when id does not match the everyone id' do
       subject.id = 123
       expect(subject.everyone?).to be false
     end

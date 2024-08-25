@@ -1,32 +1,36 @@
 // @ts-check
 
-const fs = require('fs');
-const http = require('http');
-const path = require('path');
-const url = require('url');
+import fs from 'node:fs';
+import http from 'node:http';
+import path from 'node:path';
+import url from 'node:url';
 
-const cors = require('cors');
-const dotenv = require('dotenv');
-const express = require('express');
-const { Redis } = require('ioredis');
-const { JSDOM } = require('jsdom');
-const pg = require('pg');
-const dbUrlToConfig = require('pg-connection-string').parse;
-const WebSocket = require('ws');
+import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
+import { Redis } from 'ioredis';
+import { JSDOM } from 'jsdom';
+import pg from 'pg';
+import pgConnectionString from 'pg-connection-string';
+import { WebSocketServer } from 'ws';
 
-const errors = require('./errors');
-const { AuthenticationError, RequestError } = require('./errors');
-const { logger, httpLogger, initializeLogLevel, attachWebsocketHttpLogger, createWebsocketLogger } = require('./logging');
-const { setupMetrics } = require('./metrics');
-const { isTruthy, normalizeHashtag, firstParam } = require("./utils");
+import { AuthenticationError, RequestError, extractStatusAndMessage as extractErrorStatusAndMessage } from './errors.js';
+import { logger, httpLogger, initializeLogLevel, attachWebsocketHttpLogger, createWebsocketLogger } from './logging.js';
+import { setupMetrics } from './metrics.js';
+import { isTruthy, normalizeHashtag, firstParam } from './utils.js';
 
 const environment = process.env.NODE_ENV || 'development';
 
 // Correctly detect and load .env or .env.production file based on environment:
 const dotenvFile = environment === 'production' ? '.env.production' : '.env';
+const dotenvFilePath = path.resolve(
+  url.fileURLToPath(
+    new URL(path.join('..', dotenvFile), import.meta.url)
+  )
+);
 
 dotenv.config({
-  path: path.resolve(__dirname, path.join('..', dotenvFile))
+  path: dotenvFilePath
 });
 
 initializeLogLevel(process.env, environment);
@@ -143,7 +147,7 @@ const pgConfigFromEnv = (env) => {
   let baseConfig = {};
 
   if (env.DATABASE_URL) {
-    const parsedUrl = dbUrlToConfig(env.DATABASE_URL);
+    const parsedUrl = pgConnectionString.parse(env.DATABASE_URL);
 
     // The result of dbUrlToConfig from pg-connection-string is not type
     // compatible with pg.PoolConfig, since parts of the connection URL may be
@@ -188,7 +192,7 @@ const pgConfigFromEnv = (env) => {
     if (!baseConfig.password && env.DB_PASS) {
       baseConfig.password = env.DB_PASS;
     }
-  } else if (Object.hasOwnProperty.call(pgConfigs, environment)) {
+  } else if (Object.hasOwn(pgConfigs, environment)) {
     baseConfig = pgConfigs[environment];
 
     if (env.DB_SSLMODE) {
@@ -244,6 +248,10 @@ const redisConfigFromEnv = (env) => {
   const redisParams = {
     host: env.REDIS_HOST || '127.0.0.1',
     port: redisPort,
+    // Force support for both IPv6 and IPv4, by default ioredis sets this to 4,
+    // only allowing IPv4 connections:
+    // https://github.com/redis/ioredis/issues/1576
+    family: 0,
     db: redisDatabase,
     password: env.REDIS_PASSWORD || undefined,
   };
@@ -285,7 +293,7 @@ const CHANNEL_NAMES = [
 const startServer = async () => {
   const pgPool = new pg.Pool(pgConfigFromEnv(process.env));
   const server = http.createServer();
-  const wss = new WebSocket.Server({ noServer: true });
+  const wss = new WebSocketServer({ noServer: true });
 
   // Set the X-Request-Id header on WebSockets:
   wss.on("headers", function onHeaders(headers, req) {
@@ -326,7 +334,7 @@ const startServer = async () => {
       // Unfortunately for using the on('upgrade') setup, we need to manually
       // write a HTTP Response to the Socket to close the connection upgrade
       // attempt, so the following code is to handle all of that.
-      const {statusCode, errorMessage } = errors.extractStatusAndMessage(err);
+      const {statusCode, errorMessage } = extractErrorStatusAndMessage(err);
 
       /** @type {Record<string, string | number | import('pino-http').ReqId>} */
       const headers = {
@@ -520,43 +528,27 @@ const startServer = async () => {
    * @param {any} req
    * @returns {Promise<ResolvedAccount>}
    */
-  const accountFromToken = (token, req) => new Promise((resolve, reject) => {
-    pgPool.connect((err, client, done) => {
-      if (err) {
-        reject(err);
-        return;
-      }
+  const accountFromToken = async (token, req) => {
+    const result = await pgPool.query('SELECT oauth_access_tokens.id, oauth_access_tokens.resource_owner_id, users.account_id, users.chosen_languages, oauth_access_tokens.scopes, devices.device_id FROM oauth_access_tokens INNER JOIN users ON oauth_access_tokens.resource_owner_id = users.id LEFT OUTER JOIN devices ON oauth_access_tokens.id = devices.access_token_id WHERE oauth_access_tokens.token = $1 AND oauth_access_tokens.revoked_at IS NULL LIMIT 1', [token]);
 
-      // @ts-ignore
-      client.query('SELECT oauth_access_tokens.id, oauth_access_tokens.resource_owner_id, users.account_id, users.chosen_languages, oauth_access_tokens.scopes, devices.device_id FROM oauth_access_tokens INNER JOIN users ON oauth_access_tokens.resource_owner_id = users.id LEFT OUTER JOIN devices ON oauth_access_tokens.id = devices.access_token_id WHERE oauth_access_tokens.token = $1 AND oauth_access_tokens.revoked_at IS NULL LIMIT 1', [token], (err, result) => {
-        done();
+    if (result.rows.length === 0) {
+      throw new AuthenticationError('Invalid access token');
+    }
 
-        if (err) {
-          reject(err);
-          return;
-        }
+    req.accessTokenId = result.rows[0].id;
+    req.scopes = result.rows[0].scopes.split(' ');
+    req.accountId = result.rows[0].account_id;
+    req.chosenLanguages = result.rows[0].chosen_languages;
+    req.deviceId = result.rows[0].device_id;
 
-        if (result.rows.length === 0) {
-          reject(new AuthenticationError('Invalid access token'));
-          return;
-        }
-
-        req.accessTokenId = result.rows[0].id;
-        req.scopes = result.rows[0].scopes.split(' ');
-        req.accountId = result.rows[0].account_id;
-        req.chosenLanguages = result.rows[0].chosen_languages;
-        req.deviceId = result.rows[0].device_id;
-
-        resolve({
-          accessTokenId: result.rows[0].id,
-          scopes: result.rows[0].scopes.split(' '),
-          accountId: result.rows[0].account_id,
-          chosenLanguages: result.rows[0].chosen_languages,
-          deviceId: result.rows[0].device_id
-        });
-      });
-    });
-  });
+    return {
+      accessTokenId: result.rows[0].id,
+      scopes: result.rows[0].scopes.split(' '),
+      accountId: result.rows[0].account_id,
+      chosenLanguages: result.rows[0].chosen_languages,
+      deviceId: result.rows[0].device_id
+    };
+  };
 
   /**
    * @param {any} req
@@ -748,7 +740,7 @@ const startServer = async () => {
       return;
     }
 
-    const {statusCode, errorMessage } = errors.extractStatusAndMessage(err);
+    const {statusCode, errorMessage } = extractErrorStatusAndMessage(err);
 
     res.writeHead(statusCode, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ error: errorMessage }));
@@ -767,28 +759,15 @@ const startServer = async () => {
    * @param {any} req
    * @returns {Promise.<void>}
    */
-  const authorizeListAccess = (listId, req) => new Promise((resolve, reject) => {
+  const authorizeListAccess = async (listId, req) => {
     const { accountId } = req;
 
-    pgPool.connect((err, client, done) => {
-      if (err) {
-        reject();
-        return;
-      }
+    const result = await pgPool.query('SELECT id, account_id FROM lists WHERE id = $1 AND account_id = $2 LIMIT 1', [listId, accountId]);
 
-      // @ts-ignore
-      client.query('SELECT id, account_id FROM lists WHERE id = $1 LIMIT 1', [listId], (err, result) => {
-        done();
-
-        if (err || result.rows.length === 0 || result.rows[0].account_id !== accountId) {
-          reject();
-          return;
-        }
-
-        resolve();
-      });
-    });
-  });
+    if (result.rows.length === 0) {
+      throw new AuthenticationError('List not found');
+    }
+  };
 
   /**
    * @param {string[]} channelIds
@@ -908,7 +887,7 @@ const startServer = async () => {
           // If the payload already contains the `filtered` property, it means
           // that filtering has been applied on the ruby on rails side, as
           // such, we don't need to construct or apply the filters in streaming:
-          if (Object.prototype.hasOwnProperty.call(payload, "filtered")) {
+          if (Object.hasOwn(payload, "filtered")) {
             transmit(event, payload);
             return;
           }
@@ -1103,7 +1082,7 @@ const startServer = async () => {
 
   /**
    * @param {http.IncomingMessage} req
-   * @param {WebSocket} ws
+   * @param {import('ws').WebSocket} ws
    * @param {string[]} streamName
    * @returns {function(string, string): void}
    */
@@ -1155,7 +1134,7 @@ const startServer = async () => {
       // @ts-ignore
       streamFrom(channelIds, req, req.log, onSend, onEnd, 'eventsource', options.needsFiltering);
     }).catch(err => {
-      const {statusCode, errorMessage } = errors.extractStatusAndMessage(err);
+      const {statusCode, errorMessage } = extractErrorStatusAndMessage(err);
 
       res.log.info({ err }, 'Eventsource subscription error');
 
@@ -1320,7 +1299,7 @@ const startServer = async () => {
 
   /**
    * @typedef WebSocketSession
-   * @property {WebSocket & { isAlive: boolean}} websocket
+   * @property {import('ws').WebSocket & { isAlive: boolean}} websocket
    * @property {http.IncomingMessage & ResolvedAccount} request
    * @property {import('pino').Logger} logger
    * @property {Object.<string, { channelName: string, listener: SubscriptionListener, stopHeartbeat: function(): void }>} subscriptions
@@ -1353,7 +1332,7 @@ const startServer = async () => {
         stopHeartbeat,
       };
     }).catch(err => {
-      const {statusCode, errorMessage } = errors.extractStatusAndMessage(err);
+      const {statusCode, errorMessage } = extractErrorStatusAndMessage(err);
 
       logger.error({ err }, 'Websocket subscription error');
 
@@ -1446,7 +1425,7 @@ const startServer = async () => {
   };
 
   /**
-   * @param {WebSocket & { isAlive: boolean }} ws
+   * @param {import('ws').WebSocket & { isAlive: boolean }} ws
    * @param {http.IncomingMessage & ResolvedAccount} req
    * @param {import('pino').Logger} log
    */
@@ -1482,13 +1461,15 @@ const startServer = async () => {
       // Decrement the metrics for connected clients:
       connectedClients.labels({ type: 'websocket' }).dec();
 
-      // We need to delete the session object as to ensure it correctly gets
+      // We need to unassign the session object as to ensure it correctly gets
       // garbage collected, without doing this we could accidentally hold on to
       // references to the websocket, the request, and the logger, causing
       // memory leaks.
-      //
-      // @ts-ignore
-      delete session;
+
+      // This is commented out because `delete` only operated on object properties
+      // It needs to be replaced by `session = undefined`, but it requires every calls to
+      // `session` to check for it, thus a significant refactor
+      // delete session;
     });
 
     // Note: immediately after the `error` event is emitted, the `close` event

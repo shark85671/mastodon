@@ -1806,16 +1806,9 @@ en:
     mastodon-dark: Mastodon (Dark)
     mastodon-light: Mastodon (Light)
     contrast: Mastodon (High contrast)
-    mastodon-pink: Mastodon (Pink)
-    mastodon-shark: Mastodon (Shark)
-    modern-dark: Modern (Dark)
-    modern-light: Modern (Light)
     tangerineui: Tangerine (Auto)
     tangerineui-purple: Tangerine Purple (Auto)
-    tangerineui-pink: Tangerine Pink (Auto)
-    tangerineui-pink-light: Tangerine Pink (Light)
-    tangerineui-shark: Tangerine Shark (Auto)
-    tangerineui-shark-light: Tangerine Shark (Light)
+    tangerineui-pink: Tangerine Cherry (Auto)
     system: Automatic (use system theme)
   time:
     formats:

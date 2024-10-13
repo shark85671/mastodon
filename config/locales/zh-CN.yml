@@ -1,7 +1,7 @@
 ---
 zh-CN:
   about:
-    about_mastodon_html: 来自未来的社交网络：无广告、无监视、去中心化、合乎道德！使用 Mastodon 夺回你的数据！
+    about_mastodon_html: 未来的社交网络：没有广告，没有企业监视，注重道德设计，并实现去中心化！使用 Mastodon，掌控你的数据！
     contact_missing: 未设定
     contact_unavailable: 未公开
     hosted_on: 运行在 %{domain} 上的 Mastodon 实例
@@ -10,12 +10,12 @@ zh-CN:
     followers:
       other: 关注者
     following: 正在关注
-    instance_actor_flash: 该账号用来代表虚拟角色，并不代表个人用户，仅代表服务器本身。该账号用于达成互联之目的，不应该被停用。
-    last_active: 最近活动
+    instance_actor_flash: 此账号是用于代表服务器本身的虚拟角色，而非任何个人用户。它用于联邦目的，不应被停用。
+    last_active: 最近活跃
     link_verified_on: 此链接的所有权已在 %{date} 检查
     nothing_here: 空空如也！
     pin_errors:
-      following: 你必须关注你要推荐的人
+      following: 你必须已关注想要推荐的用户
     posts:
       other: 嘟文
     posts_tab_heading: 嘟文
@@ -107,7 +107,7 @@ zh-CN:
       perform_full_suspension: 封禁
       previous_strikes: 既往处罚
       previous_strikes_description_html:
-        other: 此账号已有<strong>%{count}</strong>次处罚。
+        other: 此账号已有<strong>%{count}</strong>次处罚记录。
       promote: 升任
       protocol: 协议
       public: 公开页面

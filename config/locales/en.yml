@@ -1808,7 +1808,7 @@ en:
     contrast: Mastodon (High contrast)
     tangerineui: Tangerine (Auto)
     tangerineui-purple: Tangerine Purple (Auto)
-    tangerineui-pink: Tangerine Cherry (Auto)
+    tangerineui-cherry: Tangerine Cherry (Auto)
     system: Automatic (use system theme)
   time:
     formats:

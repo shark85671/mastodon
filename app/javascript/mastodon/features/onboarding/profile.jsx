@@ -127,7 +127,7 @@ export const Profile = () => {
             <label htmlFor='display_name'><FormattedMessage id='onboarding.profile.display_name' defaultMessage='Display name' /></label>
             <span className='hint'><FormattedMessage id='onboarding.profile.display_name_hint' defaultMessage='Your full name or your fun name…' /></span>
             <div className='label_input'>
-              <input id='display_name' type='text' value={displayName} onChange={handleDisplayNameChange} maxLength={30} />
+              <input id='display_name' type='text' value={displayName} onChange={handleDisplayNameChange} maxLength={60} />
             </div>
           </div>
 

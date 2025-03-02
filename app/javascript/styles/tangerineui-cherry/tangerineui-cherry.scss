@@ -8,7 +8,7 @@
 
 /* 📄 Meta */
 :root {
-    --version: "v2.1";
+    --version: "v2.4~";
 
     --variant-name: "Cherry";
     --variant-emoji: "\1F352\00A0";
@@ -82,7 +82,7 @@
     }
 }
 :root {
-    /* Mastodon logo */
+    /* Mastodon logo (custom)*/
     --logo: url("data:image/svg+xml,%3csvg width='216.414' height='232.01' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' class='mastodon-logo'%3e%3cg class='layer'%3e%3ctitle%3eLayer 1%3c/title%3e%3cpath d='m91.78%2c217.99c1.06%2c-11.93 3.53%2c-24.26 9.06%2c-34.5c5.28%2c-6.72 13.81%2c-6.52 20.93%2c-8.82c-9.98%2c-2.85 -19.29%2c-7.89 -28.42%2c-13.22c-14.95%2c-6.91 -30.18%2c3.05 -43.66%2c10.03c-10.01%2c5.09 -19.91%2c11.09 -30.69%2c13.61c-7.07%2c-5.23 -1.17%2c-20.06 3.81%2c-26.32c6.29%2c-8.65 15.61%2c-13.12 22.44%2c-21.01c3%2c-11.15 -10.83%2c-13.9 -17.04%2c-18.28c-9.64%2c-4.64 -17.82%2c-12.25 -25.15%2c-20.74c17.01%2c-1.06 32.06%2c10.19 47.41%2c17.01c8.3%2c3.2 16.13%2c7.7 23.9%2c12.15c3.56%2c-0.02 15.64%2c2.79 14.43%2c-1.53c-9.05%2c-0.43 -8.15%2c-12.89 -2.05%2c-17.83c8.96%2c-7.5 19.87%2c-11.93 27.33%2c-21.86c3.27%2c-2.79 4.99%2c-9.63 7.76%2c-11.79c11.92%2c9.91 18.89%2c25.55 25.47%2c40.38c10.71%2c2.57 21.52%2c4.66 32.44%2c5.29c10.66%2c5.19 19.76%2c14.23 28.11%2c23.41c6.32%2c5.08 8.01%2c18.89 -0.59%2c21.67c-21.21%2c12.16 -44.89%2c15.87 -68.25%2c17.04c-3.29%2c-0.25 -6.16%2c0.14 -6.18%2c4.74c-2.06%2c6.56 -2.9%2c14.18 -6.77%2c19.52c-4.27%2c-1.16 -0.22%2c-14.56 -4.61%2c-8.2c-8.63%2c9.97 -19.02%2c17.46 -29.66%2c24.15c0%2c-1.63 0%2c-3.26 0%2c-4.9l-0.02%2c0z' fill='%23d3487f' id='svg_3' stroke='%23d3487f' stroke-dasharray='null' stroke-linecap='null' stroke-linejoin='null'/%3e%3cpath d='m138.46%2c82.13c0.03%2c-2.98 5.88%2c-3.97 8.28%2c-6.03c9.27%2c-5.12 18.3%2c-11.02 23.98%2c-19.09c6.04%2c-8.24 9.31%2c-18.33 6.85%2c-27.89c-1.3%2c-5.93 -8.31%2c-10.68 -15.72%2c-9.93c-4.88%2c0.55 -10.52%2c1.47 -13.35%2c5.18c-3.07%2c1.89 -1.38%2c6.34 2.71%2c4.65c5.23%2c-1.64 11.8%2c1.71 11.59%2c6.45c0.01%2c4.5 -5.53%2c7.68 -10.69%2c7.25c-5.75%2c-0.05 -11.44%2c-3.86 -11.32%2c-8.81c-0.4%2c-7.97 7.99%2c-14.48 16.96%2c-16.16c8.03%2c-2.06 17.36%2c-1.23 24.13%2c3.05c5.04%2c2.83 9%2c7.12 9.83%2c12.19c1.79%2c6.59 -0.52%2c13.39 -4.53%2c19.12c-5.15%2c7.72 -13.01%2c14.04 -22.14%2c18.58c-8.48%2c4.45 -17.3%2c8.46 -26.42%2c11.95c-0.05%2c-0.17 -0.11%2c-0.34 -0.16%2c-0.52l0%2c0.01zm60.91%2c-32.51c-4.37%2c-1.63 -3.4%2c-8.23 1.68%2c-8.38c3.8%2c-0.73 7.35%2c2.54 6.18%2c5.56c-0.74%2c2.83 -4.87%2c4.05 -7.86%2c2.82zm0%2c-18.08c-4.37%2c-1.63 -3.4%2c-8.23 1.68%2c-8.38c3.8%2c-0.73 7.35%2c2.54 6.18%2c5.56c-0.76%2c2.84 -4.85%2c4.05 -7.86%2c2.82z' fill='%23d3487f' id='svg_5' stroke='%23ffaad4' stroke-dasharray='null' stroke-linecap='null' stroke-linejoin='null'/%3e%3c/g%3e%3c/svg%3e");
 
     /* Post+Notifications icons */
@@ -275,7 +275,7 @@
 }
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Mastodon logo */
+        /* Mastodon logo (custom)*/
         --logo: url("data:image/svg+xml,%3csvg width='216.414' height='232.01' xmlns='http://www.w3.org/2000/svg' xmlns:svg='http://www.w3.org/2000/svg' class='mastodon-logo'%3e%3cg class='layer'%3e%3ctitle%3eLayer 1%3c/title%3e%3cpath d='m91.78%2c217.99c1.06%2c-11.93 3.53%2c-24.26 9.06%2c-34.5c5.28%2c-6.72 13.81%2c-6.52 20.93%2c-8.82c-9.98%2c-2.85 -19.29%2c-7.89 -28.42%2c-13.22c-14.95%2c-6.91 -30.18%2c3.05 -43.66%2c10.03c-10.01%2c5.09 -19.91%2c11.09 -30.69%2c13.61c-7.07%2c-5.23 -1.17%2c-20.06 3.81%2c-26.32c6.29%2c-8.65 15.61%2c-13.12 22.44%2c-21.01c3%2c-11.15 -10.83%2c-13.9 -17.04%2c-18.28c-9.64%2c-4.64 -17.82%2c-12.25 -25.15%2c-20.74c17.01%2c-1.06 32.06%2c10.19 47.41%2c17.01c8.3%2c3.2 16.13%2c7.7 23.9%2c12.15c3.56%2c-0.02 15.64%2c2.79 14.43%2c-1.53c-9.05%2c-0.43 -8.15%2c-12.89 -2.05%2c-17.83c8.96%2c-7.5 19.87%2c-11.93 27.33%2c-21.86c3.27%2c-2.79 4.99%2c-9.63 7.76%2c-11.79c11.92%2c9.91 18.89%2c25.55 25.47%2c40.38c10.71%2c2.57 21.52%2c4.66 32.44%2c5.29c10.66%2c5.19 19.76%2c14.23 28.11%2c23.41c6.32%2c5.08 8.01%2c18.89 -0.59%2c21.67c-21.21%2c12.16 -44.89%2c15.87 -68.25%2c17.04c-3.29%2c-0.25 -6.16%2c0.14 -6.18%2c4.74c-2.06%2c6.56 -2.9%2c14.18 -6.77%2c19.52c-4.27%2c-1.16 -0.22%2c-14.56 -4.61%2c-8.2c-8.63%2c9.97 -19.02%2c17.46 -29.66%2c24.15c0%2c-1.63 0%2c-3.26 0%2c-4.9l-0.02%2c0z' fill='%23d3487f' id='svg_3' stroke='%23d3487f' stroke-dasharray='null' stroke-linecap='null' stroke-linejoin='null'/%3e%3cpath d='m138.46%2c82.13c0.03%2c-2.98 5.88%2c-3.97 8.28%2c-6.03c9.27%2c-5.12 18.3%2c-11.02 23.98%2c-19.09c6.04%2c-8.24 9.31%2c-18.33 6.85%2c-27.89c-1.3%2c-5.93 -8.31%2c-10.68 -15.72%2c-9.93c-4.88%2c0.55 -10.52%2c1.47 -13.35%2c5.18c-3.07%2c1.89 -1.38%2c6.34 2.71%2c4.65c5.23%2c-1.64 11.8%2c1.71 11.59%2c6.45c0.01%2c4.5 -5.53%2c7.68 -10.69%2c7.25c-5.75%2c-0.05 -11.44%2c-3.86 -11.32%2c-8.81c-0.4%2c-7.97 7.99%2c-14.48 16.96%2c-16.16c8.03%2c-2.06 17.36%2c-1.23 24.13%2c3.05c5.04%2c2.83 9%2c7.12 9.83%2c12.19c1.79%2c6.59 -0.52%2c13.39 -4.53%2c19.12c-5.15%2c7.72 -13.01%2c14.04 -22.14%2c18.58c-8.48%2c4.45 -17.3%2c8.46 -26.42%2c11.95c-0.05%2c-0.17 -0.11%2c-0.34 -0.16%2c-0.52l0%2c0.01zm60.91%2c-32.51c-4.37%2c-1.63 -3.4%2c-8.23 1.68%2c-8.38c3.8%2c-0.73 7.35%2c2.54 6.18%2c5.56c-0.74%2c2.83 -4.87%2c4.05 -7.86%2c2.82zm0%2c-18.08c-4.37%2c-1.63 -3.4%2c-8.23 1.68%2c-8.38c3.8%2c-0.73 7.35%2c2.54 6.18%2c5.56c-0.76%2c2.84 -4.85%2c4.05 -7.86%2c2.82z' fill='%23d3487f' id='svg_5' stroke='%23ffaad4' stroke-dasharray='null' stroke-linecap='null' stroke-linejoin='null'/%3e%3c/g%3e%3c/svg%3e");
 
         /* Post+Notifications icons */
@@ -461,7 +461,7 @@ body.app-body  {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 0;
     background-color: var(--color-bg);
     background-image: var(--gradient-bg);
 }
@@ -697,6 +697,7 @@ body.app-body  {
     order: 1;
 }
 .app-body .columns-area__panels__main {
+    contain: inline-size;
     order: 2;
 }
 .app-body .columns-area__panels__pane--compositional {
@@ -1482,7 +1483,7 @@ body.app-body  {
     border-bottom: 0;
 }
 .app-body .navigation-bar .account__display-name {
-    line-height: 20px;
+    line-height: 1.25;
 }
 .app-body :is(.navigation-bar, .reply-indicator) .account__avatar {
     outline: 6px solid var(--color-content-bg);
@@ -1894,7 +1895,7 @@ body.app-body  {
     border-radius: 8px;
     border: 1px solid var(--color-accent-bg);
     font-size: 12px;
-    line-height: 16px;
+    line-height: 1.33;
     transition:
         background-color .2s,
         border-color .2s;
@@ -2336,7 +2337,7 @@ body.app-body  {
     margin-inline-start: -56px;
     padding: 0;
     margin-bottom: 0;
-    line-height: 10px;
+    line-height: 0.625;
     align-items: start;
 }
 .app-body .status__info .status__display-name {
@@ -2428,7 +2429,7 @@ body.app-body  {
 }
 .app-body .reply-indicator__content,
 .app-body .status__content {
-    line-height: 19px;
+    line-height: 1.4;
     position: static;
 }
 
@@ -2609,7 +2610,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     height: 60px !important;
 }
 .app-body .detailed-status .status__content {
-    line-height: 24px;
+    line-height: 1.27;
 }
 .app-body .detailed-status {
     padding-bottom: 8px;
@@ -3064,7 +3065,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 .layout-multiple-columns .status-card:not(.expanded) .status-card__image {
     width: 80px;
 }
-.layout-multiple-columns .status-card:not(.expanded,:has(.icon-file-text)) .status-card__content {
+.layout-multiple-columns .status-card:not(.expanded,:has(.icon-file-text),[href*="/@" i]) .status-card__content {
     padding-top: 0;
     padding-bottom: 0;
 }
@@ -3080,6 +3081,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     font-size: 12px;
 }
 .app-body .status-card:has(+ .more-from-author) {
+    box-sizing: border-box;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom: 0;
@@ -3132,12 +3134,12 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     padding: 0 0 25px;
     font-weight: 700;
     font-size: 15px;
-    line-height: 19px;
+    line-height: 1.26;
     position: relative;
 }
 .app-body .detailed-status .content-warning {
     font-size: 19px;
-    line-height: 24px;
+    line-height: 1.26;
 }
 .app-body .content-warning::before,
 .app-body .content-warning::after {
@@ -3164,7 +3166,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     border-radius: 8px;
     text-transform: initial;
     font-size: 12px;
-    line-height: 16px;
+    line-height: 1.33;
     font-weight: 500;
     color: var(--color-content-fg);
     padding: 5px 8px 5px 30px;
@@ -3310,6 +3312,17 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     display: none;
 }
 
+.app-body .media-gallery__alt__popover {
+    background-color: color-mix(in srgb, var(--color-content-bg), transparent 15%);
+    border: 1px solid var(--color-lines-translucent);
+}
+.app-body .media-gallery__alt__popover :is(p, h4) {
+    color: var(--color-content-fg);
+}
+.app-body .media-gallery__alt__popover h4 {
+    font-weight: bold;
+}
+
 
 /* Empty columns */
 .app-body .empty-column-indicator {
@@ -3336,7 +3349,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     padding-left: 75px;
     text-align: left;
     font-size: 95%;
-    line-height: 18px;
+    line-height: 1.5;
 }
 .app-body .timeline-hint a {
     color: var(--color-accent);
@@ -3497,7 +3510,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
    ----------------- */
 .app-body .tabs-bar__wrapper {
     background-color: transparent;
-    box-shadow: inset 0 10px var(--color-bg);
+    box-shadow: inset 0 20px var(--color-bg);
 }
 .app-body .column-header__wrapper.active:before {
     top: -17px;
@@ -3805,13 +3818,13 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
             border-radius: 15px 15px 0 0;
         }
         @media (prefers-color-scheme: light) {
-            .app-body.theme-system .ui::after {
+            .app-body:is(.theme-system, .theme-mastodon-light) .ui::after {
                 box-shadow: 0 -10px 0 10px #f3f5f7;
                 border-radius: 15px 15px 0 0;
             }
         }
         @media (prefers-color-scheme: dark) {
-            .app-body.theme-system .ui::after {
+            .app-body:is(.theme-system, .theme-default) .ui::after {
                 box-shadow: 0 -10px 0 10px #191b22;
                 border-radius: 15px 15px 0 0;
             }
@@ -5158,7 +5171,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     width: 30px;
     height: 30px;
     font-size: 27px;
-    line-height: 30px;
+    line-height: 1.11;
     top: -40px;
     left: -40px;
     animation: 10s linear 0s makeawish;
@@ -5211,7 +5224,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 }
 .app-body .dismissable-banner__message__actions .button,
 .app-body .dismissable-banner__message__actions .button.button-tertiary {
-    line-height: 28px;
+    line-height: 1.75;
     padding: 6px 17px;
 }
 .app-body .dismissable-banner__message__actions {
@@ -5677,6 +5690,7 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
     width: 100%;
     border-bottom: 2px solid var(--color-content-secondary-separator);
     background-color: var(--color-content-bg);
+    color: var(--color-content-fg);
     box-sizing: border-box;
 }
 .app-body .item-list .column-link:hover {
@@ -5707,10 +5721,25 @@ div[tabindex="-1"] + div[tabindex="-1"] > .status__wrapper > .status-reply.statu
 .app-body .list-adder .column-inline-form {
     border-radius: 0;
 }
-.list-adder .list {
+.app-body .list-adder .list {
     border-bottom: 2px solid var(--color-content-secondary-separator);
 }
-
+.app-body .list-editor .drawer__pager {
+    border: none;
+    border-radius: 0;
+}
+.app-body .list-editor .account__relationship .icon-button {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+.app-body .list-editor .search .search__input {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--color-accent-lines);
+}
+.app-body .list-editor .search .search__input:focus {
+    border-color: var(--color-accent);
+}
 
 /* ➕ Follow requests */
 .app-body #Follow-requests {
@@ -6703,7 +6732,7 @@ a:is(.active,
 .app-body .hover-card .button:not(.button--destructive) {
     background-color: var(--color-accent);
     color: var(--color-accent-fg);
-    line-height: 22px;
+    line-height: 1.375;
     padding: 10px 18px;
 }
 .app-body .hover-card .button:not(.button--destructive):hover {
@@ -6748,7 +6777,7 @@ a:is(.active,
 }
 .app-body .sign-in-banner p:nth-child(2) {
     font-size: 85%;
-    line-height: 18px;
+    line-height: 1.325;
 }
 .app-body .sign-in-banner p {
     margin-bottom: 25px;
@@ -7390,7 +7419,7 @@ a:is(.active,
     background-color: var(--color-accent);
     color: var(--color-accent-fg);
     border-radius: 8px;
-    line-height: 15px;
+    line-height: 0.94;
     font-weight: bold;
     padding-left: 8px;
     padding-right: 8px;
@@ -7481,7 +7510,7 @@ a:is(.active,
     padding: 0;
 }
 
-.layout-multiple-columns .drawer__inner:not(:has(> .search-results))::after {
+.layout-multiple-columns .search + .drawer__pager .drawer__inner:has(.compose-form):not(:has(> .search-results))::after {
     content: var(--meta);
     color: var(--color-fg-muted);
     padding: 12px;
@@ -7492,6 +7521,10 @@ a:is(.active,
 .layout-multiple-columns .link-footer::before,
 .layout-multiple-columns .link-footer::after {
     display: none;
+}
+
+.layout-multiple-columns .list-editor__accounts + .drawer__inner.backdrop {
+    background-color: var(--color-content-bg);
 }
 
 @media screen and (min-width:630px) and (max-width:1174px) {
@@ -7652,7 +7685,6 @@ a:is(.active,
 .app-body
 .trends__item:has(
     .trends__item__name a:is(
-        [href*="gift" i],
         [href*="christmas" i],
         [href*="weihnachten" i],
         [href*="noel" i]

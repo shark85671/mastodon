@@ -7,5 +7,6 @@ contrast: styles/contrast.scss
 tangerineui: styles/tangerineui.scss
 tangerineui-purple: styles/tangerineui-purple.scss
 tangerineui-cherry: styles/tangerineui-cherry.scss
-Rainbow: styles/tangerineui-rainbow.scss
+tangerineui-lagoon: styles/tangerineui-lagoon.scss
+tangerineui-rainbow: styles/tangerineui-rainbow.scss
 #tangerineui-test: styles/tangerineui-rainbow.scss

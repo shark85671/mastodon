@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - '*'
+      - 'main'
   pull_request:
     paths:
       - .github/workflows/build-image.yml
@@ -12,9 +12,20 @@ permissions:
   contents: read
   packages: write
 
+# This builds multiple images with one runner each, allowing us to build for multiple architectures
+# using Github's runners.
+# The two-step process is adapted form:
+# https://docs.docker.com/build/ci/github-actions/multi-platform/#distribute-build-across-multiple-runners
 jobs:
+  # Build each (amd64 and arm64) image separately
   build-image:
-    runs-on: ubuntu-latest
+    runs-on: ${{ startsWith(matrix.platform, 'linux/arm') && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
+    strategy:
+      fail-fast: false
+      matrix:
+        platform:
+          - linux/amd64
+          - linux/arm64
 
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
@@ -46,7 +57,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mastodon:v4.3.2 , ${{ secrets.DOCKERHUB_USERNAME }}/mastodon:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/mastodon:v4.3.4 , ${{ secrets.DOCKERHUB_USERNAME }}/mastodon:latest
           build-args: MASTODON_VERSION_METADATA=${{ steps.version_vars.outputs.mastodon_version_metadata }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

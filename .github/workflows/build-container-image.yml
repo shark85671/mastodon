@@ -19,7 +19,7 @@ permissions:
 jobs:
   # Build amd64 image only
   build-image:
-    runs-on: ${{ startsWith(matrix.platform, 'linux/arm') && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -49,7 +49,7 @@ jobs:
         id: version_vars
         if: github.repository == 'shark85671/mastodon' && github.event_name == 'push' && github.ref_name == 'main'
         run: |
-          echo mastodon_version_metadata=-$(date +'%Y%m%d') >> $GITHUB_OUTPUT
+          echo mastodon_version_metadata=shark+$(date +'%Y%m%d') >> $GITHUB_OUTPUT
       
       - name: Build and push
         id: docker_build

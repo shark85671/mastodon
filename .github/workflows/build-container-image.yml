@@ -17,7 +17,7 @@ permissions:
 # The two-step process is adapted form:
 # https://docs.docker.com/build/ci/github-actions/multi-platform/#distribute-build-across-multiple-runners
 jobs:
-  # Build each (amd64 and arm64) image separately
+  # Build amd64 image only
   build-image:
     runs-on: ${{ startsWith(matrix.platform, 'linux/arm') && 'ubuntu-24.04-arm' || 'ubuntu-24.04' }}
     strategy:
@@ -25,7 +25,6 @@ jobs:
       matrix:
         platform:
           - linux/amd64
-          - linux/arm64
 
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
